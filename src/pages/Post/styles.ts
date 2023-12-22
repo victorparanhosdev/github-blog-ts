@@ -38,17 +38,17 @@ padding-inline: 2rem;
             content: '';
             display: block;
             width: 100%;
-            height: 1.5px;
+            height: 2px;
             background: ${({theme})=> theme.COLORS.blue};
             position: absolute;
-            bottom: -0.2rem;
-            transform: scale(0.1);
+            bottom: -0.5rem;
+            transform: scaleX(0);
             opacity: 0;
         }
         
         &:hover::after{
         
-        transform: scale(1);
+        transform: scaleX(1);
         opacity: 1;
         transition: transform 0.4s, opacity 0.3s;
     }

@@ -52,11 +52,11 @@ img {
             content: '';
             display: block;
             width: 100%;
-            height: 1.5px;
+            height: 2px;
             background: ${({theme})=> theme.COLORS.blue};
             position: absolute;
             bottom: 1rem;
-            transform: scale(0.1);
+            transform: scaleX(0);
             opacity: 0;
         }
   
@@ -65,7 +65,7 @@ img {
 
         &:hover::after{
         
-            transform: scale(1);
+            transform: scaleX(1);
             opacity: 1;
             transition: transform 0.4s, opacity 0.3s;
         }
