@@ -1,16 +1,14 @@
 import styled from 'styled-components'
 import { varWord } from '../../styles/varWord'
 
-export const Container = styled.div`
-
-`
 
 export const Content = styled.main`
 
 width: 100%;
-max-width: 86.5rem;
+max-width: 88.5rem;
 margin: auto;
 margin-top: -10rem;
+padding-inline: 2rem;
 
 `
 
@@ -21,6 +19,7 @@ display: flex;
 align-items: center;
 gap: 3.2rem;
 padding: 3.2rem 4rem;
+margin-bottom: 7.2rem;
 
 img {
     min-width: 14.8rem;
@@ -47,6 +46,29 @@ img {
         ${varWord.fonts.Link}
         color: ${({theme})=> theme.COLORS.blue};
         text-transform: uppercase;
+        position: relative;
+
+        &::after {
+            content: '';
+            display: block;
+            width: 100%;
+            height: 1.5px;
+            background: ${({theme})=> theme.COLORS.blue};
+            position: absolute;
+            bottom: 1rem;
+            transform: scale(0.1);
+            opacity: 0;
+        }
+  
+
+
+
+        &:hover::after{
+        
+            transform: scale(1);
+            opacity: 1;
+            transition: transform 0.4s, opacity 0.3s;
+        }
     }
 }
 p {
@@ -78,6 +100,103 @@ ul {
 
 
     }
+}
+
+
+
+`
+
+export const FormSearch = styled.form`
+
+div:first-child {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1.2rem;
+
+    h2 {
+        ${varWord.fonts.TitleS}
+        color: ${({theme})=> theme.COLORS['base-subtitle']};
+
+    }
+
+    span {
+        ${varWord.fonts.TextS}
+        color: ${({theme})=> theme.COLORS['base-span']};
+    }
+}
+
+
+div:nth-child(2) {
+    width: 100%;
+    padding: 1.2rem 1.6rem;
+    border: 1px solid transparent;
+    background:  ${({theme})=> theme.COLORS['base-input']};
+    border-radius: 6px;
+
+    input {
+        ${varWord.fonts.TextM}
+        color: ${({theme})=> theme.COLORS['base-text']};
+        border: 0;
+        outline: 0;
+        background: transparent;
+        width: 100%;
+
+
+    }
+    &::placeholder {
+        ${varWord.fonts.TextM}
+        color: ${({theme})=> theme.COLORS['base-label']};
+    }
+
+    &:focus-within {
+        border-color:  ${({theme})=> theme.COLORS.blue}
+    }
+
+
+}
+
+`
+
+export const Post = styled.section`
+margin-block: 4.8rem;
+display: grid;
+grid-template-columns: repeat(auto-fill, minmax(34.6rem, 1fr));
+justify-items: center;
+gap: 3.2rem;
+
+> div {
+    display: grid;
+    grid-template-areas: 'title title info'
+    'description description description';
+    background: ${({theme})=> theme.COLORS['base-post']};
+    border-radius: 10px;
+    padding: 3.2rem;
+   
+    
+
+    h2 {
+        grid-area: title;
+        ${varWord.fonts.TitleM}
+        color: ${({theme})=> theme.COLORS['base-title']};
+    }
+    span {
+        grid-area: info;
+        justify-self: end;
+        ${varWord.fonts.TextS};
+        color: ${({theme})=> theme.COLORS['base-span']};
+    }
+
+    p {
+        grid-area: description;
+        text-align: justify;
+        display: -webkit-flex;
+        ${varWord.fonts.TextM};
+        margin-top: 2rem;
+        color: ${({theme})=> theme.COLORS['base-text']};
+
+    }
+
+
 }
 
 

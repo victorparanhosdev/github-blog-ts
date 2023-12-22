@@ -39,13 +39,11 @@ button {
 }
 
 ::-webkit-scrollbar-thumb {
-    background-color: black;
+    background-color: ${({theme})=> theme.COLORS["base-span"]};
     border-radius: 2rem;
 }
 
-::-webkit-scrollbar-thumb:hover {
-    background-color: gray;
-}
+
 
 ::-webkit-scrollbar-corner {
     display: none;
