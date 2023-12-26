@@ -10,11 +10,11 @@ interface PropsBlogProvider {
 }
 
 interface PropsContextProvider {
-    DataGit: PropsArrayData | undefined,
-    fecthApi: (query?: string) => Promise<void>
+    ProfileInfo: PropsProfileData | undefined
+
 }
 
-interface PropsArrayData{
+interface PropsProfileData{
     name: string,
     avatar_url: string
     html_url: string
@@ -26,19 +26,14 @@ interface PropsArrayData{
 
 function BlogProvider({children}: PropsBlogProvider){
 
-    const [DataGit, setDataGit] = useState<PropsArrayData>()
+    const [ProfileInfo, setProfileInfo] = useState<PropsProfileData>()
 
 
 
-    async function fecthApi(query?: string) {
-
-        const response = await api.get(`/users/victorparanhosdev`, {params: {
-            q: query,
-        }})
-
+    async function fecthApi() {
+        const response = await api.get(`/users/victorparanhosdev`)
         const {name, avatar_url, html_url, login, company, followers, bio} = response.data
-        
-        const ArrayData = {
+        const ProfileData = {
             name,
             avatar_url,
             html_url,
@@ -47,8 +42,7 @@ function BlogProvider({children}: PropsBlogProvider){
             followers,
             bio
         }
-        
-        setDataGit(ArrayData)
+        setProfileInfo(ProfileData)
         
     }
 
@@ -60,7 +54,7 @@ function BlogProvider({children}: PropsBlogProvider){
 
 
     return(
-        <BlogContext.Provider value={{DataGit, fecthApi}}>
+        <BlogContext.Provider value={{ProfileInfo, fecthApi}}>
         {children}
         </BlogContext.Provider>
     )

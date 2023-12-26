@@ -7,11 +7,11 @@ import { useBlog } from "../../hooks/useBlog";
 import {useForm} from 'react-hook-form'
 
 export function Home(){
-    const {DataGit, fecthApi} = useBlog()
+    const {ProfileInfo} = useBlog()
     const {register, handleSubmit, reset} = useForm()
     
     function searchForm(data: any){
-        fecthApi(data.query)
+        
         reset()
     }
 
@@ -20,22 +20,22 @@ export function Home(){
             <Header/>
             <Content>
                {
-                DataGit &&
+                ProfileInfo &&
                  <Profile>
-                 <img src={DataGit.avatar_url} alt="" />
+                 <img src={ProfileInfo.avatar_url} alt="" />
                  <div>
                      <div className="box-title">
-                         <h1>{DataGit.name}</h1>
+                         <h1>{ProfileInfo.name}</h1>
                        
-                         <a target="_blank" href={DataGit.html_url}>Github <FontAwesomeIcon icon={faUpRightFromSquare}/></a>
+                         <a target="_blank" href={ProfileInfo.html_url}>Github <FontAwesomeIcon icon={faUpRightFromSquare}/></a>
                      </div>  
 
-                     <p>{DataGit.bio}</p>
+                     <p>{ProfileInfo.bio}</p>
             
                      <ul>
-                         <li><FontAwesomeIcon icon={faGithub}/> <span>{DataGit.login}</span></li>
-                         <li><FontAwesomeIcon icon={faBuilding}/><span>{DataGit.company ? DataGit.company : 'Rocketseat'}</span></li>
-                         <li><FontAwesomeIcon icon={faUserGroup}/><span>{DataGit.followers} Seguidores</span></li>
+                         <li><FontAwesomeIcon icon={faGithub}/> <span>{ProfileInfo.login}</span></li>
+                         <li><FontAwesomeIcon icon={faBuilding}/><span>{ProfileInfo.company ? ProfileInfo.company : 'Rocketseat'}</span></li>
+                         <li><FontAwesomeIcon icon={faUserGroup}/><span>{ProfileInfo.followers} Seguidores</span></li>
                      </ul>
                  </div>
              </Profile>
