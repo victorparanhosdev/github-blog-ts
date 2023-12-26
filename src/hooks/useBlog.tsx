@@ -21,8 +21,10 @@ function BlogProvider({children}: PropsBlogProvider){
 
 
     useEffect(()=> {
-        async function fecthApi() {
-            await api.get('/blogs').then(response=> setDataGit(response.data)) 
+        async function fecthApi(query: string = 'Um texto') {
+            await api.get('/blogs',{params: {
+                q: query
+            }}).then(response=> setDataGit(response.data)) 
             
         }
 
