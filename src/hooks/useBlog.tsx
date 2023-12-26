@@ -10,30 +10,57 @@ interface PropsBlogProvider {
 }
 
 interface PropsContextProvider {
-    DataGit: any
+    DataGit: PropsArrayData | undefined,
+    fecthApi: (query?: string) => Promise<void>
 }
 
+interface PropsArrayData{
+    name: string,
+    avatar_url: string
+    html_url: string
+    login: string
+    company: string
+    followers: number
+    bio: string
+}
 
 function BlogProvider({children}: PropsBlogProvider){
 
-    const [DataGit, setDataGit] = useState([])
-    console.log(DataGit)
+    const [DataGit, setDataGit] = useState<PropsArrayData>()
+
+
+
+    async function fecthApi(query?: string) {
+
+        const response = await api.get(`/users/victorparanhosdev`, {params: {
+            q: query,
+        }})
+
+        const {name, avatar_url, html_url, login, company, followers, bio} = response.data
+        
+        const ArrayData = {
+            name,
+            avatar_url,
+            html_url,
+            login,
+            company,
+            followers,
+            bio
+        }
+        
+        setDataGit(ArrayData)
+        
+    }
+
 
 
     useEffect(()=> {
-        async function fecthApi(query: string = 'Um texto') {
-            await api.get('/blogs',{params: {
-                q: query
-            }}).then(response=> setDataGit(response.data)) 
-            
-        }
-
         fecthApi()
     },[])
 
 
     return(
-        <BlogContext.Provider value={{DataGit}}>
+        <BlogContext.Provider value={{DataGit, fecthApi}}>
         {children}
         </BlogContext.Provider>
     )

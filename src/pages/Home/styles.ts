@@ -20,6 +20,9 @@ align-items: center;
 gap: 3.2rem;
 padding: 3.2rem 4rem;
 margin-bottom: 7.2rem;
+>div {
+    width: 100%;
+}
 
 img {
     min-width: 14.8rem;
@@ -38,7 +41,7 @@ img {
     ${varWord.fonts.TitleL}
     color: ${({theme})=> theme.COLORS['base-title']};
     }
-    button {
+    a {
         border: 0;
         background-color: transparent;
         display: flex;

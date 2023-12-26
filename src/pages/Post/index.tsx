@@ -3,8 +3,14 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGithub } from '@fortawesome/free-brands-svg-icons';
 import { faComment, faCalendarDay, faUpRightFromSquare, faAngleLeft} from '@fortawesome/free-solid-svg-icons';
 import { Header } from "../../components/Header";
+//import { useBlog } from "../../hooks/useBlog";
 
 export function Post(){
+    //const {DataGit} = useBlog()
+
+
+
+
     return(
         <>
         <Header />
