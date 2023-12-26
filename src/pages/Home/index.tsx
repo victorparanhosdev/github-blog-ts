@@ -3,7 +3,9 @@ import { Header } from "../../components/Header"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGithub } from '@fortawesome/free-brands-svg-icons';
 import { faBuilding, faUserGroup, faUpRightFromSquare} from '@fortawesome/free-solid-svg-icons';
+
 export function Home(){
+
     return(
         <>
             <Header/>
@@ -26,6 +28,7 @@ export function Home(){
                     </div>
                 </Profile>
 
+
                 <section>
                     <FormSearch action="">
                     <div>
@@ -34,12 +37,8 @@ export function Home(){
                     </div>
 
                     <div>
-                 
                         <input type="text" placeholder="Buscar Counteúdo" />
-                     
-         
-
-                    </div>
+                   </div>
 
                     <button style={{display: "none", visibility: "hidden", opacity: 0}} type="submit">Buscar</button>
                     </FormSearch>

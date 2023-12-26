@@ -10,7 +10,6 @@ export function Post(){
         <Header />
         <Content>
 
-
             <div>
                 <div className="box-button">
                     <button><FontAwesomeIcon icon={faAngleLeft} />voltar</button>

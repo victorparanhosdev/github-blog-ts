@@ -16,15 +16,13 @@ interface PropsContextProvider {
 
 function BlogProvider({children}: PropsBlogProvider){
 
-    const [DataGit, setDataGit] = useState('')
-
+    const [DataGit, setDataGit] = useState([])
+    console.log(DataGit)
 
 
     useEffect(()=> {
         async function fecthApi() {
-            await api.get('/victorparanhosdev').then(response=> response.data).then(data=> {
-                setDataGit(data)
-            })
+            await api.get('/blogs').then(response=> setDataGit(response.data)) 
             
         }
 

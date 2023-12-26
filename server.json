@@ -1,0 +1,18 @@
+{
+    "blogs": [
+        {
+            "id": 1,
+            "title": "Um texto de exemplo",
+            "description": "Lorem ipsum dolor sit amet . Os operadores gráficos e tipográficos sabem disso bem, na realidade, todas as profissões que lidam com o universo da comunicação têm um relacionamento estável com essas palavras, mas o que é? Lorem ipsum é um texto fofo sem qualquer sentido. É uma seqüência de palavras latinas que, como estão posicionadas, não formem frases com um sentido completo, mas dão vida a um texto de teste útil para preencher espaços que irão Posteriormente serão ocupados a partir de textos ad hoc compostos por profissionais de comunicação.",
+            "created_at": "2023-12-26T12:26:13.435Z"
+        },
+
+        {
+            "id": 2,
+            "title": "Um texto de exemplo 2",
+            "description": "Palavras, mas o que é? Lorem ipsum é um texto fofo sem qualquer sentido. É uma seqüência de palavras latinas que, como estão posicionadas, não formem frases com um sentido completo, mas dão vida a um texto de teste útil para preencher espaços que irão Posteriormente serão ocupados a partir de textos ad hoc compostos por profissionais de comunicação.",
+            "created_at": "2023-12-26T11:26:13.435Z"
+        }
+
+    ]
+}
