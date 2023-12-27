@@ -13,7 +13,7 @@ padding-inline: 2rem;
 `
 
 export const Profile = styled.div`
-background: ${({theme})=> theme.COLORS["base-profile"]};
+background: ${({ theme }) => theme.COLORS["base-profile"]};
 border-radius: 1rem;
 display: flex;
 align-items: center;
@@ -39,7 +39,7 @@ img {
 
     h1 {
     ${varWord.fonts.TitleL}
-    color: ${({theme})=> theme.COLORS['base-title']};
+    color: ${({ theme }) => theme.COLORS['base-title']};
     }
     a {
         border: 0;
@@ -47,7 +47,7 @@ img {
         display: flex;
         gap: 0.8rem;
         ${varWord.fonts.Link}
-        color: ${({theme})=> theme.COLORS.blue};
+        color: ${({ theme }) => theme.COLORS.blue};
         text-transform: uppercase;
         position: relative;
 
@@ -56,7 +56,7 @@ img {
             display: block;
             width: 100%;
             height: 2px;
-            background: ${({theme})=> theme.COLORS.blue};
+            background: ${({ theme }) => theme.COLORS.blue};
             position: absolute;
             bottom: 1rem;
             transform: scaleX(0);
@@ -77,7 +77,7 @@ img {
 p {
     margin-top: 0.8rem;
     ${varWord.fonts.TextM}
-    color: ${({theme})=> theme.COLORS['base-text']};
+    color: ${({ theme }) => theme.COLORS['base-text']};
 
 } 
 
@@ -93,12 +93,12 @@ ul {
         gap: 0.8rem;
 
         svg {
-            color: ${({theme})=> theme.COLORS['base-label']};
+            color: ${({ theme }) => theme.COLORS['base-label']};
         }
 
         span {
             ${varWord.fonts.TextM};
-            color: ${({theme})=> theme.COLORS['base-subtitle']};
+            color: ${({ theme }) => theme.COLORS['base-subtitle']};
         }
 
 
@@ -118,13 +118,13 @@ div:first-child {
 
     h2 {
         ${varWord.fonts.TitleS}
-        color: ${({theme})=> theme.COLORS['base-subtitle']};
+        color: ${({ theme }) => theme.COLORS['base-subtitle']};
 
     }
 
     span {
         ${varWord.fonts.TextS}
-        color: ${({theme})=> theme.COLORS['base-span']};
+        color: ${({ theme }) => theme.COLORS['base-span']};
     }
 }
 
@@ -133,12 +133,12 @@ div:nth-child(2) {
     width: 100%;
     padding: 1.2rem 1.6rem;
     border: 1px solid transparent;
-    background:  ${({theme})=> theme.COLORS['base-input']};
+    background:  ${({ theme }) => theme.COLORS['base-input']};
     border-radius: 6px;
 
     input {
         ${varWord.fonts.TextM}
-        color: ${({theme})=> theme.COLORS['base-text']};
+        color: ${({ theme }) => theme.COLORS['base-text']};
         border: 0;
         outline: 0;
         background: transparent;
@@ -148,11 +148,11 @@ div:nth-child(2) {
     }
     &::placeholder {
         ${varWord.fonts.TextM}
-        color: ${({theme})=> theme.COLORS['base-label']};
+        color: ${({ theme }) => theme.COLORS['base-label']};
     }
 
     &:focus-within {
-        border-color:  ${({theme})=> theme.COLORS.blue}
+        border-color:  ${({ theme }) => theme.COLORS.blue}
     }
 
 
@@ -167,40 +167,7 @@ grid-template-columns: repeat(auto-fill, minmax(34.6rem, 1fr));
 justify-items: center;
 gap: 3.2rem;
 
-> div {
-    display: grid;
-    grid-template-areas: 'title title info'
-    'description description description';
-    background: ${({theme})=> theme.COLORS['base-post']};
-    border-radius: 10px;
-    padding: 3.2rem;
-   
-    
 
-    h2 {
-        grid-area: title;
-        ${varWord.fonts.TitleM}
-        color: ${({theme})=> theme.COLORS['base-title']};
-    }
-    span {
-        grid-area: info;
-        justify-self: end;
-        ${varWord.fonts.TextS};
-        color: ${({theme})=> theme.COLORS['base-span']};
-    }
-
-    p {
-        grid-area: description;
-        text-align: justify;
-        display: -webkit-flex;
-        ${varWord.fonts.TextM};
-        margin-top: 2rem;
-        color: ${({theme})=> theme.COLORS['base-text']};
-
-    }
-
-
-}
 
 
 

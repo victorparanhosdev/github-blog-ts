@@ -4,17 +4,26 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGithub } from '@fortawesome/free-brands-svg-icons';
 import { faBuilding, faUserGroup, faUpRightFromSquare} from '@fortawesome/free-solid-svg-icons';
 import { useBlog } from "../../hooks/useBlog";
-import {useForm} from 'react-hook-form'
+import { useNavigate } from "react-router-dom";
+
+import { Card } from "../../components/Card";
 
 export function Home(){
-    const {ProfileInfo} = useBlog()
-    const {register, handleSubmit, reset} = useForm()
-    
-    function searchForm(data: any){
-        
-        reset()
+    const {ProfileInfo, fetchSearchForm, FormSearchHook, DataIssues} = useBlog()
+    const {handleSubmit, register} = FormSearchHook
+    const navigate = useNavigate()
+
+    function handleForm(data: any){
+        fetchSearchForm(data.query)
     }
 
+    function handlePost(params: number){
+        navigate(`post/${params}`)
+    }
+
+    
+    
+    
     return(
         <>
             <Header/>
@@ -34,7 +43,7 @@ export function Home(){
             
                      <ul>
                          <li><FontAwesomeIcon icon={faGithub}/> <span>{ProfileInfo.login}</span></li>
-                         <li><FontAwesomeIcon icon={faBuilding}/><span>{ProfileInfo.company ? ProfileInfo.company : 'Rocketseat'}</span></li>
+                         {ProfileInfo.company ? <li><FontAwesomeIcon icon={faBuilding}/><span>{ProfileInfo.company}</span></li> : null }
                          <li><FontAwesomeIcon icon={faUserGroup}/><span>{ProfileInfo.followers} Seguidores</span></li>
                      </ul>
                  </div>
@@ -43,10 +52,10 @@ export function Home(){
 
 
                 <section>
-                    <FormSearch onSubmit={handleSubmit(searchForm)}>
+                    <FormSearch onSubmit={handleSubmit(handleForm)}>
                     <div>
                         <h2>Publicações</h2>
-                        <span>6 publicações</span>
+                        <span>{DataIssues.length} publicações</span>
                     </div>
 
                     <div>
@@ -59,33 +68,10 @@ export function Home(){
 
                 <Post>
 
-                    <div>
-                        <h2>JavaScript data types and data structures</h2>
-                        <span>Há 1 dia</span>
-                        <p>Programming languages all have built-in data structures, but these often differ from one language to another. This article attempts to list the built-in data structures available in Programming languages all have built-in data structures, but these often differ from one language to another. This article attempts to list the built-in data structures available in</p>
-                    </div>
-                    <div>
-                        <h2>JavaScript data types and data structures</h2>
-                        <span>Há 1 dia</span>
-                        <p>Programming languages all have built-in data structures, but these often differ from one language to another. This article attempts to list the built-in data structures available in Programming languages all have built-in data structures, but these often differ from one language to another. This article attempts to list the built-in data structures available in</p>
-                    </div>
-                    <div>
-                        <h2>JavaScript data types and data structures</h2>
-                        <span>Há 1 dia</span>
-                        <p>Programming languages all have built-in data structures, but these often differ from one language to another. This article attempts to list the built-in data structures available in Programming languages all have built-in data structures, but these often differ from one language to another. This article attempts to list the built-in data structures available in</p>
-                    </div>
+                    {DataIssues.length > 0 && DataIssues.map(dataCard => {
+                        return <Card key={String(dataCard.number)} handlePost={handlePost} dataCard={dataCard}/>
+                    })}
 
-                    <div>
-                        <h2>JavaScript data types and data structures</h2>
-                        <span>Há 1 dia</span>
-                        <p>Programming languages all have built-in data structures, but these often differ from one language to another. This article attempts to list the built-in data structures available in Programming languages all have built-in data structures, but these often differ from one language to another. This article attempts to list the built-in data structures available in</p>
-                    </div>
-
-                    <div>
-                        <h2>JavaScript data types and data structures</h2>
-                        <span>Há 1 dia</span>
-                        <p>Programming languages all have built-in data structures, but these often differ from one language to another. This article attempts to list the built-in data structures available in Programming languages all have built-in data structures, but these often differ from one language to another. This article attempts to list the built-in data structures available in</p>
-                    </div>
 
 
                 </Post>

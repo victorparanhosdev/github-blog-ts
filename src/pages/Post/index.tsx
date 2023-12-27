@@ -3,57 +3,60 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGithub } from '@fortawesome/free-brands-svg-icons';
 import { faComment, faCalendarDay, faUpRightFromSquare, faAngleLeft} from '@fortawesome/free-solid-svg-icons';
 import { Header } from "../../components/Header";
-//import { useBlog } from "../../hooks/useBlog";
+import { useNavigate, useParams } from "react-router-dom";
+import { useBlog } from "../../hooks/useBlog";
+import { formatDistance } from "date-fns"
+import {ptBR} from 'date-fns/locale/pt-BR';
+import ReactMarkdown from 'react-markdown';
 
 export function Post(){
-    //const {DataGit} = useBlog()
 
+    const {DataIssues} = useBlog()
+    const {id} = useParams()
+    const navigate = useNavigate()
 
+    function handleBack(){
+        navigate('/')
+    }
 
+    const FilterData = DataIssues.filter(data=> {
+        return data.number === Number(id)
+    })
+    console.log(FilterData[0])
+  
 
     return(
         <>
         <Header />
-        <Content>
+       {FilterData.length > 0 &&  <Content>
 
-            <div>
-                <div className="box-button">
-                    <button><FontAwesomeIcon icon={faAngleLeft} />voltar</button>
-                    <button>ver no github <FontAwesomeIcon icon={faUpRightFromSquare}/></button>
-                </div>
-                <h1>JavaScript data types and data structures</h1>
-                <ul>
-                    <li><FontAwesomeIcon icon={faGithub}/> <span>victorparanhosdev</span></li>
-                    <li><FontAwesomeIcon icon={faCalendarDay}/><span>Há 1 dia</span></li>
-                    <li><FontAwesomeIcon icon={faComment}/><span>5 comentários</span></li>
-                </ul>
+<div>
+    <div className="box-button">
+        <button onClick={handleBack}><FontAwesomeIcon icon={faAngleLeft} />voltar</button>
+        <a href={FilterData[0].html_url} target="_blank">ver no github <FontAwesomeIcon icon={faUpRightFromSquare}/></a>
+    </div>
+    <h1>{FilterData[0].title}</h1>
+    <ul>
+        <li><FontAwesomeIcon icon={faGithub}/> <span>{FilterData[0].user.login}</span></li>
+        <li><FontAwesomeIcon icon={faCalendarDay}/><span>{formatDistance(new Date(FilterData[0].created_at), new Date(), {addSuffix: true, locale: ptBR})}</span></li>
+        <li><FontAwesomeIcon icon={faComment}/><span>{FilterData[0].comments} comentários</span></li>
+    </ul>
 
-            </div>
+</div>
 
-            <section>
+<section>
 
-                <div className="firstdiv">
-                    <p><strong>Programming languages all have built-in data structures, but these often differ from one language to another.</strong>This article attempts to list the built-in data structures available in JavaScript and what properties they have. These can be used to build other data structures. Wherever possible, comparisons with other languages are drawn.
-                    </p>
-                    <h3>Dynamic typing</h3>
-                    <p>JavaScript is a loosely typed and dynamic language. Variables in JavaScript are not directly associated with any particular value type, and any variable can be assigned (and re-assigned) values of all types:</p>
-                </div>
-
-                <div>
-                    <pre>
-                        <code>
-                    let foo = 42;   // foo is now a number
-                    foo = 'bar';    // foo is now a string
-                    foo = true;     // foo is now a boolean    
-                        </code>
-                    </pre>
-                </div>
-
-            </section>
+    <div className="firstdiv">
+        <p><ReactMarkdown>{FilterData[0].body}</ReactMarkdown></p>
+    </div>
 
 
 
-        </Content>
+</section>
+
+
+
+</Content>}
 
         </>
     )

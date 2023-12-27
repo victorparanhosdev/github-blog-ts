@@ -22,7 +22,7 @@ padding-inline: 2rem;
     justify-content: space-between;
     margin-bottom: 2rem;
 
-    button {
+    a, button {
         color:${({theme})=> theme.COLORS.blue};
         border: 0;
         background: none;
@@ -110,39 +110,19 @@ section {
 
     .firstdiv {
 
-        h3{
-        ${varWord.fonts.TextM}
-        color: ${({theme})=> theme.COLORS.blue};
-        text-decoration: underline;
-        }
+   
 
         p{
         color: ${({theme})=> theme.COLORS["base-text"]};
         ${varWord.fonts.TextM}
         }
 
-        p:first-child {
-            margin-bottom: 2rem;
-
-        }
+    
 
 
 
     }
 
-    div:last-child {
-        background: ${({theme})=> theme.COLORS["base-post"]};
-        border-radius: 2px;
-        padding: 1.6rem;
-        margin-top: 2.4rem;
-        pre {
-            white-space: pre-wrap;
-            padding: 10px;
-     
-            color: ${({theme})=> theme.COLORS["base-text"]};
-
-        }
-    }
 
 
 }
