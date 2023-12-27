@@ -8,6 +8,7 @@ export const Container = styled.div`
     background: ${({theme})=> theme.COLORS['base-post']};
     border-radius: 10px;
     padding: 3.2rem;
+    width: 100%;
     cursor: pointer;
    
 

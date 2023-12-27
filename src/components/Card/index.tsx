@@ -18,7 +18,7 @@ export function Card({dataCard, handlePost}: PropsCard) {
         <Container onClick={() => handlePost(dataCard.number)} key={String(dataCard.number)}>
             <h2>{dataCard.title}</h2>
             <span>{result}</span>
-            <p className="paragrafo-p"><ReactMarkdown>{dataCard.body}</ReactMarkdown></p>
+          <ReactMarkdown className="paragrafo-p">{dataCard.body}</ReactMarkdown>
         </Container>
     )
 }

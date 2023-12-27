@@ -1,7 +1,6 @@
 import { createContext, useContext, ReactNode } from "react";
 import { useState, useEffect } from "react";
 import { api } from "../services/api";
-import { FieldValues, UseFormReturn, useForm } from "react-hook-form";
 
 
 const BlogContext = createContext({} as PropsContextProvider)
@@ -13,7 +12,6 @@ interface PropsBlogProvider {
 interface PropsContextProvider {
     ProfileInfo: PropsProfileData | undefined,
     fetchSearchForm: (query: any) => Promise<void>,
-    FormSearchHook: UseFormReturn<FieldValues>,
     DataIssues: any[] | []
 
 }
@@ -32,17 +30,13 @@ function BlogProvider({ children }: PropsBlogProvider) {
 
     const [ProfileInfo, setProfileInfo] = useState<PropsProfileData>()
     const [DataIssues, setDataIssues] = useState([])
-    const FormSearchHook = useForm()
 
-    const { reset } = FormSearchHook
-
-
-    async function fetchSearchForm(data?: string) {
-
+    async function fetchSearchForm(data: any) {
         await api.get(`/search/issues`, {
             params: {
-                q: `${data} user:victorparanhosdev`
+                q: `${data.query}%20repo:victorparanhosdev/github-blog-ts`
             }
+            
         }).then(response => setDataIssues(response.data.items)).catch(error => {
             if (error.response) {
                 return alert(error.response.data.message)
@@ -51,12 +45,11 @@ function BlogProvider({ children }: PropsBlogProvider) {
         })
 
 
-        reset()
 
     }
 
 
-    async function fecthApi() {
+    async function fetchApiUsers() {
         const response = await api.get(`/users/victorparanhosdev`)
         const { name, avatar_url, html_url, login, company, followers, bio } = response.data
         const ProfileData = {
@@ -76,7 +69,7 @@ function BlogProvider({ children }: PropsBlogProvider) {
     async function fetchData() {
         await Promise.all([
             fetchSearchForm(""),
-            fecthApi()
+            fetchApiUsers()
         ]);
 
 
@@ -87,7 +80,7 @@ function BlogProvider({ children }: PropsBlogProvider) {
 
 
     return (
-        <BlogContext.Provider value={{ ProfileInfo, fetchSearchForm, FormSearchHook, DataIssues }}>
+        <BlogContext.Provider value={{ ProfileInfo, fetchSearchForm, DataIssues }}>
             {children}
         </BlogContext.Provider>
     )

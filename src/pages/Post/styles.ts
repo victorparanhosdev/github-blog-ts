@@ -108,18 +108,8 @@ section {
     padding: 4rem 3.2rem;
 
 
-    .firstdiv {
-
-   
-
-        p{
-        color: ${({theme})=> theme.COLORS["base-text"]};
+    .firstdiv p { color: ${({theme})=> theme.COLORS["base-text"]};
         ${varWord.fonts.TextM}
-        }
-
-    
-
-
 
     }
 
