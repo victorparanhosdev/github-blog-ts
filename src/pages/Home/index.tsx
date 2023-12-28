@@ -13,11 +13,26 @@ import { useNavigate } from "react-router-dom";
 import { Card } from "../../components/Card";
 import { useForm } from "react-hook-form";
 import { Loader } from "../../components/Loader";
+import * as zod from 'zod'
+import {zodResolver} from '@hookform/resolvers/zod'
+
+const shemasForm = zod.object({
+  query: zod.string()
+})
+
+type PropsFormZod = zod.infer<typeof shemasForm>
 
 export function Home() {
-  const { ProfileInfo, fetchSearchForm, DataIssues } =
-    useBlog();
-  const { handleSubmit, register, reset } = useForm();
+  const { ProfileInfo, fetchSearchForm, DataIssues } = useBlog();
+  const { handleSubmit, register, reset } = useForm<PropsFormZod>({
+    resolver: zodResolver(shemasForm),
+    defaultValues: {
+      query: ""
+    }
+
+  });
+
+
   const navigate = useNavigate();
 
   function handleForm(data: any) {

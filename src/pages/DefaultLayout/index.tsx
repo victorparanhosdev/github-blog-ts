@@ -11,7 +11,7 @@ export function DefaultLayout() {
 
         setTimeout(() => {
             setLoading(false)   
-        }, 1200)
+        }, 1000)
 
 
     }, [])
