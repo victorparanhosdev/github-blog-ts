@@ -15,9 +15,7 @@ justify-content: center;
     top: 50%;
     transform: translateY(-50%);
 
-    @media (max-width: 450px){
-        width: 100%;
-    }
+   
 }
 
 .imgright {
@@ -25,9 +23,7 @@ justify-content: center;
     right: 0;
     top: 50%;
     transform: translateY(-50%);
-    @media (max-width: 450px){
-        width: 100%;
-    }
+  
 
 }
 &::after{
@@ -59,11 +55,26 @@ justify-content: center;
     font-size: 2.4rem;
     color: ${({theme})=> theme.COLORS.blue};
     line-height: 1.6;
+    white-space: nowrap;
     }
     
   
 
 
 }
+
+@media (max-width: 450px){
+
+    &::after {
+        width: 100%;
+    }
+        .imgleft {
+            display: none;
+        }
+        .imgright {
+            width: 100%;
+            height: 100%;
+        }
+    }
 
 `
