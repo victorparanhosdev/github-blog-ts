@@ -15,7 +15,7 @@ justify-content: center;
     top: 50%;
     transform: translateY(-50%);
 
-    @media (max-width: 415px){
+    @media (max-width: 450px){
         width: 100%;
     }
 }
@@ -25,7 +25,7 @@ justify-content: center;
     right: 0;
     top: 50%;
     transform: translateY(-50%);
-    @media (max-width: 415px){
+    @media (max-width: 450px){
         width: 100%;
     }
 
