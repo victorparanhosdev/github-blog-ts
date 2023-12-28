@@ -51,6 +51,10 @@ export const Container = styled.div`
         -webkit-box-orient: vertical;
         text-overflow: ellipsis;
         overflow: hidden;
+        a {
+                text-decoration: none;
+                color: ${({theme})=> theme.COLORS.blue};
+            }
 
     }
 

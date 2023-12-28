@@ -2,12 +2,13 @@ import { Container } from "./styles"
 import { formatDistance } from "date-fns"
 import {ptBR} from 'date-fns/locale/pt-BR';
 
-
-
 interface PropsCard {
     dataCard: any,
     handlePost: (value: number) => void
 }
+
+
+
 
 
 export function Card({dataCard, handlePost}: PropsCard) {

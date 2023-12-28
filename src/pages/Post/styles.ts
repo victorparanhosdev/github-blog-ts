@@ -116,10 +116,18 @@ section {
     }
    
 
-    .firstdiv p { 
+    .firstdiv {
+
+        .paragrafo-p { 
         color: ${({theme})=> theme.COLORS["base-text"]};
         ${varWord.fonts.TextM};
         text-align: justify;
+        
+            a {
+                text-decoration: none;
+                color: ${({theme})=> theme.COLORS.blue};
+            }
+        }
 
     }
 

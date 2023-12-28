@@ -62,7 +62,7 @@ export function Post() {
 
                 <section>
                     <div className="firstdiv">
-                        <ReactMarkdown remarkPlugins={[remarkGfm]}>{data.body}</ReactMarkdown>
+                        <ReactMarkdown className="paragrafo-p" remarkPlugins={[remarkGfm]}>{data.body}</ReactMarkdown>
                     </div>
 
                 </section>
