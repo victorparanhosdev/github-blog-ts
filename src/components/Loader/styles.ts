@@ -1,0 +1,12 @@
+import styled from "styled-components";
+
+
+export const Container = styled.div`
+max-width: 10rem;
+overflow: hidden;
+margin: auto;
+
+
+
+
+`

@@ -20,7 +20,17 @@ align-items: center;
 gap: 3.2rem;
 padding: 3.2rem 4rem;
 margin-bottom: 7.2rem;
->div {
+
+@media (max-width: 585px){
+    padding: 3.2rem 2rem;
+    max-width: 40rem;
+    margin-inline: auto;
+    display: grid;
+    place-items: center;
+
+}
+
+> div {
     width: 100%;
 }
 
@@ -36,6 +46,7 @@ img {
 .box-title {
     display: flex;
     justify-content: space-between;
+    gap: 1rem;
 
     h1 {
     ${varWord.fonts.TitleL}
@@ -85,7 +96,14 @@ ul {
     margin-top: 2.4rem;
     display: flex;
     align-items: center;
-    gap: 2.4rem;
+    gap: 0.6rem 2.4rem;
+    flex-wrap: wrap;
+
+    @media (max-width: 585px){
+        display: grid;
+        
+    }
+
 
     li {
         display: flex;
@@ -99,6 +117,7 @@ ul {
         span {
             ${varWord.fonts.TextM};
             color: ${({ theme }) => theme.COLORS['base-subtitle']};
+            white-space: nowrap;
         }
 
 
@@ -163,7 +182,7 @@ div:nth-child(2) {
 export const Post = styled.section`
 margin-block: 4.8rem;
 display: grid;
-grid-template-columns: repeat(auto-fill, minmax(34.6rem, 1fr));
+grid-template-columns: repeat(auto-fill, minmax(27.6rem, 1fr));
 justify-items: center;
 gap: 3.2rem;
 

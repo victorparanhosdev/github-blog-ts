@@ -6,13 +6,18 @@ width: 100%;
 min-height: 29.6rem;
 display: grid;
 position: relative;
-
 z-index: -1;
+justify-content: center;
+
 .imgleft {
     position: absolute;
     left: 0;
     top: 50%;
     transform: translateY(-50%);
+
+    @media (max-width: 415px){
+        width: 100%;
+    }
 }
 
 .imgright {
@@ -20,6 +25,9 @@ z-index: -1;
     right: 0;
     top: 50%;
     transform: translateY(-50%);
+    @media (max-width: 415px){
+        width: 100%;
+    }
 
 }
 &::after{

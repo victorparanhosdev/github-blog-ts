@@ -12,6 +12,7 @@ import { useNavigate } from "react-router-dom";
 
 import { Card } from "../../components/Card";
 import { useForm } from "react-hook-form";
+import { Loader } from "../../components/Loader";
 
 export function Home() {
   const { ProfileInfo, fetchSearchForm, DataIssues } =
@@ -20,18 +21,19 @@ export function Home() {
   const navigate = useNavigate();
 
   function handleForm(data: any) {
-    fetchSearchForm(data);
+    fetchSearchForm(data.query);
     reset()
   }
 
   function handlePost(params: number) {
     navigate(`post/${params}`);
+    fetchSearchForm("")
   }
 
   return (
     <>
       <Content>
-        {ProfileInfo && (
+        {ProfileInfo ? (
           <Profile>
             <img src={ProfileInfo.avatar_url} alt="" />
             <div>
@@ -58,12 +60,12 @@ export function Home() {
                 ) : null}
                 <li>
                   <FontAwesomeIcon icon={faUserGroup} />
-                  <span>{ProfileInfo.followers} Seguidores</span>
+                  <span>{ProfileInfo.followers} seguidores</span>
                 </li>
               </ul>
             </div>
           </Profile>
-        )}
+        ): <Loader/>}
 
         <section>
           <FormSearch onSubmit={handleSubmit(handleForm)}>

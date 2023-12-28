@@ -78,6 +78,11 @@ padding-inline: 2rem;
     align-items: center;
     gap: 2.4rem;
 
+    @media (max-width: 615px){
+        flex-wrap: wrap;
+    }
+   
+
     li {
         display: flex;
         align-items: center;
@@ -106,10 +111,15 @@ padding-inline: 2rem;
 
 section {
     padding: 4rem 3.2rem;
+    @media (max-width: 425px){
+        padding: 4rem 2rem;
+    }
+   
 
-
-    .firstdiv p { color: ${({theme})=> theme.COLORS["base-text"]};
-        ${varWord.fonts.TextM}
+    .firstdiv p { 
+        color: ${({theme})=> theme.COLORS["base-text"]};
+        ${varWord.fonts.TextM};
+        text-align: justify;
 
     }
 

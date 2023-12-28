@@ -2,9 +2,6 @@ import { createContext, useContext, ReactNode } from "react";
 import { useState, useEffect } from "react";
 import { api } from "../services/api";
 
-
-const BlogContext = createContext({} as PropsContextProvider)
-
 interface PropsBlogProvider {
     children: ReactNode
 }
@@ -26,15 +23,18 @@ interface PropsProfileData {
     bio: string
 }
 
+const BlogContext = createContext({} as PropsContextProvider)
+
 function BlogProvider({ children }: PropsBlogProvider) {
 
     const [ProfileInfo, setProfileInfo] = useState<PropsProfileData>()
     const [DataIssues, setDataIssues] = useState([])
-
-    async function fetchSearchForm(data: any) {
+    console.log(DataIssues)
+    async function fetchSearchForm(data?: any) {
+ 
         await api.get(`/search/issues`, {
             params: {
-                q: `${data.query}%20repo:victorparanhosdev/github-blog-ts`
+                q: `${data} repo:victorparanhosdev/github-blog-ts`
             }
             
         }).then(response => setDataIssues(response.data.items)).catch(error => {

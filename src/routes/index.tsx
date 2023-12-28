@@ -2,7 +2,14 @@ import { Route, Routes, BrowserRouter, Navigate} from "react-router-dom";
 import { Home } from "../pages/Home";
 import { Post } from "../pages/Post";
 import { DefaultLayout } from "../pages/DefaultLayout";
+
+
+
+
 export function AppRouter() {
+
+
+
     return(
         <BrowserRouter>
         <Routes>
