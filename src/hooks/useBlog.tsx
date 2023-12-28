@@ -29,7 +29,7 @@ function BlogProvider({ children }: PropsBlogProvider) {
 
     const [ProfileInfo, setProfileInfo] = useState<PropsProfileData>()
     const [DataIssues, setDataIssues] = useState([])
-    console.log(DataIssues)
+
     async function fetchSearchForm(data?: any) {
  
         await api.get(`/search/issues`, {
