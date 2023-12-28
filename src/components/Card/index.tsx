@@ -1,4 +1,3 @@
-import ReactMarkdown from "react-markdown"
 import { Container } from "./styles"
 import { formatDistance } from "date-fns"
 import {ptBR} from 'date-fns/locale/pt-BR';
@@ -21,7 +20,7 @@ export function Card({dataCard, handlePost}: PropsCard) {
                 <span>{result}</span>
             </div>
     
-          <ReactMarkdown className="paragrafo-p">{dataCard.body}</ReactMarkdown>
+          <p className="paragrafo-p">{dataCard.body}</p>
         </Container>
     )
 }
