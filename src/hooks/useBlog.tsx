@@ -1,5 +1,5 @@
-import { createContext, useContext, ReactNode } from "react";
-import { useState, useEffect } from "react";
+import { ReactNode, useState, useEffect, useCallback} from "react";
+import { createContext, useContextSelector } from 'use-context-selector'
 import { api } from "../services/api";
 
 interface PropsBlogProvider {
@@ -49,7 +49,7 @@ function BlogProvider({ children }: PropsBlogProvider) {
     }
 
 
-    async function fetchApiUsers() {
+    const fetchApiUsers = useCallback(async ()=> {
         const response = await api.get(`/users/victorparanhosdev`)
         const { name, avatar_url, html_url, login, company, followers, bio } = response.data
         const ProfileData = {
@@ -63,7 +63,7 @@ function BlogProvider({ children }: PropsBlogProvider) {
         }
         setProfileInfo(ProfileData)
 
-    }
+    },[])
 
 
     async function fetchData() {
@@ -89,8 +89,8 @@ function BlogProvider({ children }: PropsBlogProvider) {
 
 
 function useBlog() {
-    const context = useContext(BlogContext);
-    return context
+    const contextBlog = useContextSelector(BlogContext, (context)=> context);
+    return contextBlog
 }
 
 export { BlogProvider, useBlog }

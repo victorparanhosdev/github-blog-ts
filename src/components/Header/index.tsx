@@ -2,8 +2,9 @@ import { Container } from "./styles";
 import Logo from '../../assets/logo.svg'
 import EffectLeft from '../../assets/effectleft.svg'
 import EffectRight from '../../assets/effectright.svg'
+import { memo } from "react";
 
-export function Header(){
+function HeaderComponent(){
     return(
         <Container>
             <img className="imgleft" src={EffectLeft} alt="" />
@@ -18,3 +19,5 @@ export function Header(){
         </Container>
     )
 }
+
+export const Header = memo(HeaderComponent)
